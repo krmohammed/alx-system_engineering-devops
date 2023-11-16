@@ -70,4 +70,8 @@ exit
 
 You have successfully uploaded files to a remote server using SFTP. This method provides a secure and reliable way to transfer files between your local machine and a remote server.
 
+## Author
+
+[Mohammed Khalilu Rahman](https://github.com/krmohammed)
+
 ---
