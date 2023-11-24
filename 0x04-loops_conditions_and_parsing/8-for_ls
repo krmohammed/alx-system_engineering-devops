@@ -2,5 +2,7 @@
 #diplays the content of the current directory
 
 for file in *; do
-	echo "$file" | cut -d'-' --complement -f1
+	if [[ ! "$file" =~ ^\. ]]; then
+		echo "$file" | cut -d'-' --complement -f1
+	fi
 done
