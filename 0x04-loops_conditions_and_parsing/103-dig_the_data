@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# digs the data in a log file
+
+awk '{ count[$1, $9]++ } END { for (key in count) { split(key, parts, SUBSEP); printf "%5d %s %s\n", count[key], parts[1], parts[2] } }' "apache-access.log"
