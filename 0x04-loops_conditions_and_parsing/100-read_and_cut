@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# displays the contents of /etc/passwd
+# username, user id and home directory path
 
 while IFS= read -r line; do
 	echo "$line" | cut -d: -f1,3,6
