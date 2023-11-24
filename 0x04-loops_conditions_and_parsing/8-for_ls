@@ -3,6 +3,6 @@
 
 for file in *; do
 	if [[ ! "$file" =~ ^\. ]]; then
-		echo "$file" | cut -d'-' --complement -f1
+		echo "$file" | cut -d'-' -f2-
 	fi
 done
