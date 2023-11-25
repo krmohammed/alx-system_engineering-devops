@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # kills a process
 
-if pgrep -f "4-to_infinity_and_beyond"; then
+pname="4-to_infinity_and_beyond"
+if pgrep -f "$pname" > /dev/null; then
 	pid=$(pgrep -f "4-to_infinity_and_beyond")
 	kill -15 "$pid"
 fi
