@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 # kills a process
 
-pkill -15 "4-to_infinity_and_beyond"
+pname="4-to_infinity_and_beyond"
+if pgrep -f "$pname" > /dev/null; then
+	pkill -f "$pname"
+fi
