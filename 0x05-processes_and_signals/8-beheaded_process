@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# forceful termination
+
+pname="7-highlander"
+if pgrep -f "$pname" > /dev/null; then
+	pid=$(pgrep -f "$pname")
+	kill -9 "$pid"
+fi
