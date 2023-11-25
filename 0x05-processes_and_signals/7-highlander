@@ -2,9 +2,16 @@
 # invincible kill
 
 count=1
+trap_sigterm=0
+
+trap 'trap_sigterm=1' SIGTERM
+
 until [ $count -eq 0 ]; do
 	echo "To infinity and beyond"
 	sleep 2
-	trap "I am invincible!!!" SIGTERM
+	
+	if [ $trap_sigterm -eq 1 ]; then
+		echo "I am invincible"
+	fi
 	((count++))
 done
