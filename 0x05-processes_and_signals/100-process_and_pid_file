@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# y u no love me?
+
+pid=$(pgrep -f "100-process_and_pid_file")
+handle_term() {
+	echo "I hate the kill commaned"
+	rm /var/run/myscript.pid
+	pkill "$pid"
+}
+
+handle_int() {
+	echo "Y U no love me?!"
+}
+
+handle_quit() {
+	rm /var/run/myscript.pid
+	kill -3 "$pid"
+}
+
+touch /var/run/myscript.pid
+trap 'handle_term' SIGTERM
+trap 'handle_int' SIGINT
+trap 'handle_quit' SIGQUIT
+
+while true; do
+	echo "To infinity and beyond"
+done
