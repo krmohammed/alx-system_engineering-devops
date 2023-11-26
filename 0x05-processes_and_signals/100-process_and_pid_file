@@ -4,6 +4,8 @@
 file="/var/run/myscript.pid"
 count=1
 pid=$(pgrep -f "100-process_and_pid_file")
+
+echo $$ > $file
 handle_term() {
 	echo "I hate the kill commaned"
 	rm $file
@@ -19,7 +21,6 @@ handle_quit() {
 	kill -3 "$pid"
 }
 
-touch $file
 trap 'handle_term' SIGTERM
 trap 'handle_int' SIGINT
 trap 'handle_quit' SIGQUIT
