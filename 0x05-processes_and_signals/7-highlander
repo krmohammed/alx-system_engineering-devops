@@ -3,7 +3,6 @@
 
 handle_term() {
 	echo "I am invincible!!!"
-	exit 0
 }
 
 trap 'handle_term' SIGTERM
