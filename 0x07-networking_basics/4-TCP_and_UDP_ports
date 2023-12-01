@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# displays listening ports showing listening pockets
+
+netstat -lp
