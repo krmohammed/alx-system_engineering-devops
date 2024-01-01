@@ -1,6 +1,6 @@
 # Simple Web Stack
 
-![simple web stack](https://i.imgur.com/YmTt0cw.png)
+![simple web stack](https://i.imgur.com/5kAJsjn.png)
 
 1. User accessing the website enters the url `www.foobar.com` in the address bar of the web browser
 2. The user's computer sends a DNS (Domain Name System) query to resolve `www.foobar.com` to an IP address.
