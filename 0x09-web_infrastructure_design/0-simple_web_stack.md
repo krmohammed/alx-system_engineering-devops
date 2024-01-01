@@ -17,7 +17,7 @@
 
 ---
 
-## Specifics fo this infrastructure
+## Specifics of this infrastructure
 ### Server
 A **server** is a computer or system that provides services or resources to other computers, known as clients, over a network.
 
