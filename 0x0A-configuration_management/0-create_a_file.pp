@@ -1,3 +1,5 @@
+# creates the file /tmp/school
+
 file {'school':
   path    => '/tmp/school/',
   mode    => '0744',
