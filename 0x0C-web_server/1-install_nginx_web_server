@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# configures a new Ubuntu machine (install nginx -> port 80)
+
+sudo apt-get update
+sudo apt-get install -y nginx
+
+sed 's/listen\s*80/listen 80 default_server/g' /etc/nginx/sites-available/default
+
+sudo /etc/init.d/nginx reload
+
+echo "Hello World!" /var/www/html/index.html
