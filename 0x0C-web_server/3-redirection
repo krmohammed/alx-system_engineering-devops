@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# configures a new Ubuntu machine (install nginx -> port 80)
+
+apt-get update
+apt-get install -y nginx
+
+service nginx start
+echo "Hello World!" > /var/www/html/index.html
+
+echo "server {
+	listen 80;
+	listen [::]:80 default_server;
+	root /var/www/html;
+
+	location /redirect_me {
+		return 301;
+	}
+}
+" > /etc/nginx/sites-available/redirect_me
+
+service nginx restart
