@@ -15,7 +15,6 @@ echo "server {
 	location /redirect_me {
 		return 301;
 	}
-}
-" > /etc/nginx/sites-available/redirect_me
+}" > /etc/nginx/sites-available/redirect_me
 
 service nginx restart
