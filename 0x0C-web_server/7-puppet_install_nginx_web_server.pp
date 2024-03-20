@@ -1,20 +1,20 @@
 #install and congigure an nginx web server
 
-package {"nginx":
+package {'nginx':
   ensure => installed,
 }
 
-file {"/var/www/html/index.html":
-  ensure  => file;
-  content => "Hello World!",
+file {'/var/www/html/index.html':
+  ensure  => file,
+  content => 'Hello World!',
 }
 
-file {"/var/www/html/my_404.html":
-  ensure  => file;
+file {'/var/www/html/my_404.html':
+  ensure  => file,
   content => "Ceci n'est pas une page",
 }
 
-file {"/etc/nginx/sites-available/default":
+file {'/etc/nginx/sites-available/default':
   ensure  => file,
   content => "server {
 	listen 80;
@@ -31,10 +31,10 @@ file {"/etc/nginx/sites-available/default":
 		internal;
 	}
 }",
-  require => Package["nginx"],
+  require => Package['nginx'],
 }
 
-service {"nginx"
+service {'nginx':
   ensure  => running,
-  require => Package["nginx"],
+  require => Package['nginx'],
 }
