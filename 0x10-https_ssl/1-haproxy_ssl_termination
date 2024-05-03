@@ -1,5 +1,9 @@
 global
-        log 127.0.0.1 local0 notice
+        log /dev/log local0
+	log /dev/log local1 notice
+	chroot /var/lib/haproxy
+	stats socket /run/haproxy/admin.sock mode 660 level admin
+	stats timeout 30s
         maxconn 1024
         user haproxy
         group haproxy
@@ -15,10 +19,16 @@ defaults
         timeout connect 5000
         timeout client  50000
         timeout server  50000
-frontend web_frontend
-	bind *:443 ssl crt /etc/ssl/certs/www.thekrmohammed.tech
+frontend web_frontend-http
+	bind *:80
+	reqadd X-Forwarded-Proto:\ http
+	redirect scheme https code 301 if !{ ssl_fc }
+	default_backend my_servers
+frontend web_frontend-https
+	bind *:443 ssl crt /etc/haproxy/certs/www.thekrmohammed.tech.pem
+	reqadd X-Forwarded-Proto:\ https
         default_backend my_servers
 backend my_servers
         balance roundrobin
-        server 310495-web-01 35.153.57.28 check port 80
-        server 310495-web-02 34.232.71.62 check port 80
+        server 310495-web-01 35.153.57.28:80
+        server 310495-weg-02 34.232.71.62:80
