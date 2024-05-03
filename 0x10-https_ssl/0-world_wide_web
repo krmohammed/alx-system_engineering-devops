@@ -13,7 +13,7 @@ domain_lookup()
 
 if [ -z "$2" ]; then
 	domain_lookup "$1" www
-	domain_lookup "$" lb-01
+	domain_lookup "$1" lb-01
 	domain_lookup "$1" web-01
 	domain_lookup "$1" web-02
 else
