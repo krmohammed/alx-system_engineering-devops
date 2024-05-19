@@ -28,8 +28,8 @@ frontend web_frontend
         default_backend my_servers
 backend my_servers
         balance roundrobin
-        server 310495-web-01 54.157.128.199 check
-        server 310495-web-02 54.90.50.235 check" > /etc/haproxy/haproxy.cfg
+        server 310495-web-01 35.153.57.28 check port 80
+        server 310495-web-02 34.232.71.62 check port 80" > /etc/haproxy/haproxy.cfg
 
 echo 'ENABLED=1' > /etc/default/haproxy
 
