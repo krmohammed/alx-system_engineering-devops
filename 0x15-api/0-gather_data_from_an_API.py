@@ -23,7 +23,7 @@ def get_todo_progress(emp_id):
     emp = emp_response.json()
     todos = todo_response.json()
 
-    name = emp['name']
+    name = emp.get('name')
     all_t = len(todos)
     completed = [todo for todo in todos if todo.get('completed')]
     done = len(completed)
@@ -33,7 +33,7 @@ def get_todo_progress(emp_id):
     print(output)
 
     for todo in completed:
-        print(f"\t {todo.get('title')}")
+        print("\t {}".format(todo.get('title')))
 
 
 if __name__ == "__main__":
