@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# mysql backup
+
+# password authentication
+if [ $# -lt 1 ]; then
+	echo "Usage: $0 <root_pwd>"
+	exit 1
+fi
+
+mysqldump -uroot -p$1 --all-databases | tee backup.sql
+current_date=$(date +%d-%m-%Y)
+
+tar -czvf ${current_date}.tar.gz backup.sql
