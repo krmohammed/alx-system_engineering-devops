@@ -20,7 +20,7 @@ def get_todo_progress(emp_id):
     emp = emp_response.json()
     todos = todo_response.json()
 
-    emp_name = emp.get('name')
+    emp_name = emp['name']
     all_tasks = len(todos)
     completed = [todo for todo in todos if todo.get('completed')]
     done = len(completed)
