@@ -1,26 +1,37 @@
 #!/usr/bin/python3
 """ uses a REST API, looking at employee details"""
-
-
 import requests
 import sys
 
 
-emp_id = sys.argv[1]
-emp_url = f"https://jsonplaceholder.typicode.com/users/{emp_id}"
-todo_url = f"{emp_url}/todos"
+def get_todo_progress(emp_id):
+    """ checks the todo progress of an employee
 
-emp_response = requests.get(emp_url)
-todo_response = requests.get(todo_url)
+    args:
+        emp_id <str>: employee id
+    """
+    emp_id = sys.argv[1]
+    emp_url = f"https://jsonplaceholder.typicode.com/users/{emp_id}"
+    todo_url = f"{emp_url}/todos"
 
-emp = emp_response.json()
-todos = todo_response.json()
+    emp_response = requests.get(emp_url)
+    todo_response = requests.get(todo_url)
 
-emp_name = emp.get('name')
-all_tasks = len(todos)
-completed = [todo for todo in todos if todo.get('completed')]
+    emp = emp_response.json()
+    todos = todo_response.json()
 
-print(f"Employee {emp_name} is done with tasks({len(completed)}/{all_tasks}):")
+    emp_name = emp.get('name')
+    all_tasks = len(todos)
+    completed = [todo for todo in todos if todo.get('completed')]
 
-for todo in completed:
-    print(f"\t{todo.get('title')}")
+    print(f"Employee {emp_name} is done with tasks({len(completed)}/{all_tasks}):")
+
+    for todo in completed:
+        print(f"\t{todo.get('title')}")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print(f"Usage: {sys.argv[0]} <employee_id>")
+
+    get_todo_progress(sys.argv[1])
