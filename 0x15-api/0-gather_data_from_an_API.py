@@ -20,12 +20,14 @@ def get_todo_progress(emp_id):
     emp = emp_response.json()
     todos = todo_response.json()
 
-    emp_name = emp['name']
-    all_tasks = len(todos)
+    name = emp['name']
+    all_t = len(todos)
     completed = [todo for todo in todos if todo.get('completed')]
     done = len(completed)
 
-    print(f"Employee {emp_name} is done with tasks({done}/{all_tasks}):")
+    output = "Employee {} is done with tasks({}/{}):".format(name, done, all_t)
+
+    print(output)
 
     for todo in completed:
         print(f"\t{todo.get('title')}")
