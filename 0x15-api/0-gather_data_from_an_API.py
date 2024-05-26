@@ -23,8 +23,9 @@ def get_todo_progress(emp_id):
     emp_name = emp.get('name')
     all_tasks = len(todos)
     completed = [todo for todo in todos if todo.get('completed')]
+    done = len(completed)
 
-    print(f"Employee {emp_name} is done with tasks({len(completed)}/{all_tasks}):")
+    print(f"Employee {emp_name} is done with tasks({done}/{all_tasks}):")
 
     for todo in completed:
         print(f"\t{todo.get('title')}")
