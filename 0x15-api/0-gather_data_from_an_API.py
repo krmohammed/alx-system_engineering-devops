@@ -10,12 +10,15 @@ def get_todo_progress(emp_id):
     args:
         emp_id <str>: employee id
     """
-    emp_id = sys.argv[1]
     emp_url = f"https://jsonplaceholder.typicode.com/users/{emp_id}"
-    todo_url = f"{emp_url}/todos"
+    todo_url = f"https://jsonplaceholder.typicode.com/users/{emp_id}/todos"
 
     emp_response = requests.get(emp_url)
     todo_response = requests.get(todo_url)
+
+    if emp_response.status_code != 200 or todo_response.status_code != 200:
+        print("Couldn't fetch data")
+        return
 
     emp = emp_response.json()
     todos = todo_response.json()
@@ -30,11 +33,12 @@ def get_todo_progress(emp_id):
     print(output)
 
     for todo in completed:
-        print(f"\t{todo.get('title')}")
+        print(f"\t {todo.get('title')}")
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print(f"Usage: {sys.argv[0]} <employee_id>")
+        sys.exit(1)
 
     get_todo_progress(sys.argv[1])
